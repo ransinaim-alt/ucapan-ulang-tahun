@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Selamat Ulang Tahun!</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(120deg, #f9d423, #ff4e50);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-size: 3em;
+            color: white;
+            text-shadow: 2px 2px 5px #000;
+            animation: bounce 1s infinite alternate;
+        }
+
+        p {
+            font-size: 1.5em;
+            color: white;
+            margin-top: 10px;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            background-color: #fff;
+            color: #ff4e50;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+            background-color: #ffe600;
+        }
+
+        /* Animasi bounce */
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-20px); }
+        }
+
+        /* Animasi confetti */
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: white;
+            opacity: 0.7;
+            animation: fall 3s linear infinite;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-10px) rotate(0deg); }
+            100% { transform: translateY(100vh) rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+
+<h1>Selamat Ulang Tahun!</h1>
+<p>Semoga harimu menyenangkan 🎉</p>
+<button onclick="tampilkanConfetti()">Klik untuk Kejutan!</button>
+
+<script>
+    function tampilkanConfetti() {
+        for (let i = 0; i < 100; i++) {
+            const confetti = document.createElement('div');
+            confetti.classList.add('confetti');
+            confetti.style.backgroundColor = `hsl(${Math.random()*360}, 70%, 60%)`;
+            confetti.style.left = Math.random() * window.innerWidth + 'px';
+            confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            confetti.style.width = confetti.style.height = (Math.random() * 10 + 5) + 'px';
+            document.body.appendChild(confetti);
+
+            setTimeout(() => {
+                confetti.remove();
+            }, 3000);
+        }
+    }
+</script>
+
+</body>
+</html>
